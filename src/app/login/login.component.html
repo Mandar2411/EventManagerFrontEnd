@@ -1,0 +1,26 @@
+<div class="col-lg-5 my-5 mx-lg-auto">
+    <div class="card shadow">
+      <div class="card-header pb-0">
+        <h1 class="card-title text-center">Sign In</h1>
+      </div>
+      <div class="card-body">
+        <form #usersForm="ngForm" (ngSubmit)="getUSerFormData(usersForm.value)" >
+          <div class="form-group mb-2">
+            <h2>Email</h2>
+            <input type="text" ngModel name="email" placeholder="Enter email" class= "form-control" >
+          </div>
+          <br>
+          <div class="form-group mb-2">
+            <h2>Password</h2>
+            <input type="password" ngModel name="password" placeholder="Enter password" class= "form-control">
+          </div>
+          <br>
+          <button class="btn btn-warning">Sign In</button>
+        </form>
+        <div class="text-center">
+        <p>Don't have an account? <a routerLink="/register">Sign Up</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  

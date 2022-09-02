@@ -1,0 +1,83 @@
+<div class="container mt-5">
+  <button type="button" class="btn btn-warning btn-lg mb-3" (click)="goBack()">
+    Go back
+  </button>
+  <div *ngIf="event">
+    <div class="card">
+      <h1 class="card-header">{{ event.title }}</h1>
+      <div class="card-body">
+        <div>
+          <img src="{{ event.image_url }}" width="100%" height="350" />
+        </div>
+        <br /><br />
+        <h2 class="card-title">{{ event.event_type }}</h2>
+        <div class="row">
+          <div class="col-sm-7">
+            <p><b>Venue : </b> {{event.venue}}</p>
+          </div>
+          <div class="col-sm-5">
+            <p><b>Fees : </b> Rs {{event.fee}}</p>
+          </div>
+        </div>
+        <br>
+        <p class="card-text">
+          {{ event.description }}
+        </p>
+        <br>
+        <div class="row">
+          <div class="col-sm-7">
+            <p><b>Registration Starts At : </b> {{event.reg_start_date | date:'dd-MM-yyyy HH:mm'}}</p>
+          </div>
+          <div class="col-sm-5">
+            <p><b>Event Starts At : </b> {{event.start_date | date:'dd-MM-yyyy HH:mm'}}</p>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-sm-7">
+            <p><b>Registration Ends At : </b> {{event.reg_end_date | date:'dd-MM-yyyy HH:mm'}}</p>
+          </div>
+          <div class="col-sm-5">
+            <p><b>Event Ends At : </b> {{event.end_date | date:'dd-MM-yyyy HH:mm'}}</p>
+          </div>
+        </div>
+        
+        <div *ngIf="canRegister">
+          <div *ngIf="!checkUser">
+            <button
+              type="button"
+              class="btn btn-warning btn-lg mb-3"
+              (click)="LoginInFirst()"
+            >
+              Register
+            </button>
+          </div>
+          <div *ngIf="checkUser">
+            <div *ngIf="!registered">
+              <button
+                type="button"
+                class="btn btn-warning btn-lg mb-3"
+                (click)="register()"
+              >
+                Register
+              </button>
+            </div>
+            <div *ngIf="registered">
+              <button
+                type="button"
+                class="btn btn-warning btn-lg mb-3"
+                (click)="unregister()"
+              >
+                Unregister
+              </button>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="!canRegister">
+          <br>
+          <h1><span class="badge badge-warning">{{message}}</span></h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

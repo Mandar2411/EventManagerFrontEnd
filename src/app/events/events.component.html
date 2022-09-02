@@ -1,0 +1,106 @@
+<div class="p-5 text-white">
+  <h1><b>Events & News</b></h1>
+  <h2>Learn, Compete & Grow</h2>
+</div>
+<div
+  class="container mt-2 rounded border-primary"
+  style="background-color: #d9d9d9; min-width: 87%"
+>
+  <nav class="navbar navbar-expand pb-0" style="background-color: #d9d9d9">
+    <h1
+      *ngFor="let cat of cats"
+      class="mr-5 ml-3 mybtn"
+      (click)="filter(cat)"
+      [class.selected]="cat.name === selectedCat"
+      style="cursor:pointer;"
+    >
+      {{ cat.name }}
+    </h1>
+  </nav>
+
+  <nav
+    class="navbar navbar-expand m-0 mb-4 rounded border border-info"
+    style="background-color: #e6e6e6; width: 100%;"
+  >
+    <h2
+      *ngFor="let subcat of subcats"
+      class="mr-5 ml-4 mb-0"
+      (click)="subfilter(subcat)"
+      [class.selected]="subcat.name === selectedSubcat"
+      style="cursor:pointer;"
+    >
+      {{ subcat.name }}
+    </h2>
+  </nav>
+
+  <div class="row">
+    <div class="col-sm-10">
+      <div *ngIf="events!.length > 0">
+        <div class="row">
+          <div *ngFor="let event of events">
+            <div class="col-sm-6 mb-4">
+              <div class="card" style="width: 32rem">
+                <div class="card-header">
+                  <b>{{ event.event_type }}</b>
+                </div>
+                <img
+                  class="card-img-top"
+                  style="height: 13rem"
+                  src="{{ event.image_url }}"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h1 class="card-title">{{ event.title }}</h1>
+                  
+                  <div class="row ml-1">
+                    <div *ngFor="let tagging of taggings">
+                      <h6 *ngIf="event!.id == tagging.event_id" class="badge badge-secondary mr-2">{{ tags[tagging.tag_id] }}</h6>
+                    </div>
+                  </div>
+
+                  <p class="card-text">
+                    {{ event.description | slice:0:115}}.........
+                  </p>          
+                  <div class="row mb-4"> 
+                    <div class="col-sm-8">
+                      <p class="card-text">
+                        <b>Venue : </b> {{ event.venue }}
+                      </p>
+                    </div>
+                    <div class="col-sm-4">
+                      <p class="card-text">
+                        <b>Fees : </b> {{ event.fee }} Rs
+                      </p>
+                    </div>
+                  </div>        
+                  <p class="card-text">
+                    <b>Start time : </b>{{ event.start_date | date:'dd-MM-yyyy HH:mm'}}
+                  </p>
+                  <p class="card-text">
+                    <b>End time : </b>{{ event.end_date | date:'dd-MM-yyyy HH:mm'}}
+                  </p>
+                  <a routerLink="/detail/{{event.id}}" class="btn btn-warning"
+                    >View</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="!(events!.length > 0)">
+        <h1 class="text-secondary m-5">No Events Found</h1>
+      </div>
+    </div>
+
+    <div class="col-sm-2">
+      <h1 class="pt-1"><b>Tags</b></h1>
+      <hr>
+      <div *ngFor="let tag of tagids">
+        <h2>
+          <span (click)="tagfilter(tag, $event)" class="badge badge-info" style="cursor:pointer;" id="{{tag}}">{{ tags[tag] }}</span>
+        </h2>
+      </div>
+    </div>
+  </div>
+</div>

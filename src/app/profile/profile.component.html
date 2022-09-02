@@ -1,0 +1,26 @@
+<div class="container mt-5 rounded border-primary p-5" style="background-color: white;">
+    <h1><span class="text-primary"> Welcome, </span>{{user?.email}}</h1>
+    <hr>
+    <div *ngIf="registrations?.length > 0">
+      <h1 class="mb-3">Registered Events</h1>
+      <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+          <th scope="col" class="text-center">#</th>
+          <th scope="col" class="text-center">Event</th>
+        </thead>
+        <tbody>
+            
+            <tr *ngFor="let id of registrations; let i = index">
+              <td class="text-center">{{i+1}}</td>
+              <td class="text-center"><a routerLink="/detail/{{id}}">{{events[id]}}</a></td>
+            </tr>
+           
+        </tbody>
+      </table>
+    </div>
+    <div *ngIf="registrations?.length == 0">
+      <div class="card-body">
+        <h1 class="text-danger">No Registered Events Found</h1>
+      </div>
+    </div>
+</div>
