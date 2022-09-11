@@ -1,5 +1,19 @@
 # EventsManager
 
+# SnapShots
+
+<p>
+<img src="https://user-images.githubusercontent.com/74519836/189538388-b418e1b2-a1d3-45ea-a325-c455698b09c5.png">
+<br />
+<br />
+<img src="https://user-images.githubusercontent.com/74519836/189538398-9edf8bea-59cc-418e-b000-473c02dff30d.png">
+<br />
+<br />
+<img src="https://user-images.githubusercontent.com/74519836/189538415-1314c669-3951-42e6-bd80-5883dce28afa.png">
+<br />
+</p>
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.2.
 
 ## Development server
